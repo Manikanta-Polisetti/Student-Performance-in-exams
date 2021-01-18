@@ -17,8 +17,17 @@ def y_predict():
     prediction = model.predict(x_test)
     print(prediction)
     output=prediction[0]
-    
-    return render_template('index.html', prediction_text='Marks {}'.format(output))
+    if output>=80:
+        output='A'
+    elif output>=70:
+        output='B'
+    elif output>=60:
+        output='C'
+    elif output>=50:
+        output='D'
+    else:
+        output='E'
+    return render_template('index.html', prediction_text='Grade: {}'.format(output))
 
 '''@app.route('/predict_api',methods=['POST'])
 def predict_api():
