@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Student Performance prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+	<select name="gender" required="required">
+		  <option value="">Select gender </option>
+		  <option value=0>female</option>
+		  <option value=1>male</option>
+		</select>
+	<select name="race/ethnicity" required="required">
+		<option value="">Select race/ethnicity </option>
+		<option value=0>Group A</option>
+		<option value=1>Group B</option>
+		<option value=2>Group C</option>
+		<option value=3>Group D</option>
+		<option value=4>Group E</option>
+		</select>
+	<select name="parental level of education" required="required">
+		<option value="">Select parental level of education</option>
+		<option value=0>Assosciate's degree</option>
+		<option value=1>Bachelor's degree</option>
+		<option value=2>High school</option>
+		<option value=3>Master's degree</option>
+		<option value=4>some college</option>
+		<option value=5>some high school</option>
+		</select>
+	<select name="lunch" required="required">
+		<option value="">Select lunch</option>
+		<option value=0>free/reduced</option>
+		<option value=1>standard</option>
+	</select>
+	<select name="test preparation course" required="required">
+		<option value="">Select test preparation course</option>
+		<option value=0>Completed</option>
+		<option value=1>None</option>
+	</select>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
